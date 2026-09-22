@@ -1,7 +1,19 @@
 void main() {
     Deck deck = new Deck();
+    deck.shuffle();
+    System.out.println(drawCards(deck, 4));
 
-    System.out.println(deck.getCards().toString());
-    System.out.println(deck.getCards().toString());
-    System.out.println(deck.size());
+}
+
+public static List<Card> drawCards(CardSource pDeck, int pNumber) {
+    if (pDeck == null) {
+        throw new IllegalArgumentException("Cannot draw from an inexistant deck.");
+    }
+    List<Card> result = new ArrayList<>();
+
+    for (int i = 0; i < pNumber && !pDeck.isEmpty(); i++) {
+        result.add(pDeck.draw());
+    }
+
+    return result;
 }

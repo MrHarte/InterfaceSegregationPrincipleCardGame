@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
+public class Deck implements CardSource {
     private List<Card> aCards;
 
     public Deck() {
@@ -24,5 +24,25 @@ public class Deck {
 
     public List<Card> getCards() {
         return Collections.unmodifiableList(this.aCards);
+    }
+
+    public boolean isEmpty() {
+        return this.aCards.isEmpty();
+    }
+
+    /**
+     *
+     * @return Top Card
+     * @throws IllegalStateException If deck is empty.
+     */
+    public Card draw() {
+        if(isEmpty()) {
+            throw new IllegalStateException("Cannot draw from an empty deck.");
+        }
+        return aCards.remove(this.aCards.size() - 1);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(aCards);
     }
 }
