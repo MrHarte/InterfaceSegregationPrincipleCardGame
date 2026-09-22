@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Deck implements CardSource {
@@ -39,10 +40,14 @@ public class Deck implements CardSource {
         if(isEmpty()) {
             throw new IllegalStateException("Cannot draw from an empty deck.");
         }
-        return aCards.remove(this.aCards.size() - 1);
+        return aCards.removeFirst();
     }
 
     public void shuffle() {
         Collections.shuffle(aCards);
+    }
+
+    public void sort(Comparator<Card> sortingStrategy) {
+        aCards.sort(sortingStrategy);
     }
 }

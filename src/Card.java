@@ -1,4 +1,4 @@
-public class Card {
+public class Card implements Comparable<Card> {
     private Rank aRank;
     private Suit aSuit;
 
@@ -28,5 +28,15 @@ public class Card {
     @Override
     public String toString() {
         return this.aRank + " of " + this.aSuit;
+    }
+
+    public int compareTo(Card o) {
+        int rankDiff = this.aRank.compareTo(o.getRank());
+        int suitDiff = this.aSuit.ordinal() - o.getSuit().ordinal();
+
+        if (suitDiff == 0)
+            return rankDiff;
+        else
+            return suitDiff;
     }
 }

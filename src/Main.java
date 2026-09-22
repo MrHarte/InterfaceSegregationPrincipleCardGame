@@ -3,11 +3,16 @@ void main() {
     deck.shuffle();
     System.out.println(drawCards(deck, 4));
 
+    deck.sort(new RankFirstComparator());
+    System.out.println(drawCards(deck, 8));
+
+    deck.sort(new SuitFirstComparator());
+    System.out.println(drawCards(deck, 8));
 }
 
 public static List<Card> drawCards(CardSource pDeck, int pNumber) {
     if (pDeck == null) {
-        throw new IllegalArgumentException("Cannot draw from an inexistant deck.");
+        throw new IllegalArgumentException("Cannot draw from an inexistent deck.");
     }
     List<Card> result = new ArrayList<>();
 
