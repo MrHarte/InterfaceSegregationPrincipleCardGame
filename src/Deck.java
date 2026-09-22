@@ -4,10 +4,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Deck implements CardSource {
-    private List<Card> aCards;
+    private final List<Card> aCards;
 
     public Deck() {
-        this.aCards = new ArrayList<Card>();
+        this.aCards = new ArrayList<>();
         for (Rank myRank : Rank.values()) {
             for (Suit mySuit : Suit.values()) {
                 this.aCards.add(new Card(myRank, mySuit));

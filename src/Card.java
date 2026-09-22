@@ -1,6 +1,6 @@
 public class Card implements Comparable<Card> {
-    private Rank aRank;
-    private Suit aSuit;
+    private final Rank aRank;
+    private final Suit aSuit;
 
     /**
      * Constructor to create a new card.
