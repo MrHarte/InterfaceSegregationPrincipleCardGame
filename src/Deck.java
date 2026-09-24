@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
-public class Deck implements CardSource {
+public class Deck implements CardSource, Iterable<Card> {
     private final List<Card> aCards;
 
     public Deck() {
@@ -49,5 +46,10 @@ public class Deck implements CardSource {
 
     public void sort(Comparator<Card> sortingStrategy) {
         aCards.sort(sortingStrategy);
+    }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return new DeckIterator(getCards());
     }
 }
