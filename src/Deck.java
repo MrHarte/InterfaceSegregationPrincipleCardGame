@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Deck implements CardSource, Iterable<Card> {
+public class Deck implements CardSource, Iterable<Card>, Sortable<Card>, Shufflable {
     private final List<Card> aCards;
 
     public Deck() {
@@ -45,11 +45,16 @@ public class Deck implements CardSource, Iterable<Card> {
     }
 
     public void sort(Comparator<Card> sortingStrategy) {
-        aCards.sort(sortingStrategy);
+        Collections.sort(aCards, sortingStrategy);
+    }
+
+    @Override
+    public void sort() {
+        Collections.sort(aCards);
     }
 
     @Override
     public Iterator<Card> iterator() {
-        return new DeckIterator(getCards());
+        return getCards().iterator();
     }
 }

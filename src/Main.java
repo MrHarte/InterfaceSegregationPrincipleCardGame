@@ -9,12 +9,12 @@ void main() {
     deck.sort(new SuitFirstComparator());
     System.out.println(drawCards(deck, 8));
 
-
     for (Card card : deck) {
         System.out.println(card);
     }
 
-
+    DiscardPile pile = new DiscardPile();
+    drawCards(pile, 4);
 }
 
 public static List<Card> drawCards(CardSource pDeck, int pNumber) {
